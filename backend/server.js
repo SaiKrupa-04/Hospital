@@ -7,7 +7,7 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-
+const PORT=process.env.PORT || 3000;
 const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 const phone=process.env.phone;
 app.post('/send', (req, res) => {
@@ -31,6 +31,6 @@ app.post('/send', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('Server running on http://127.0.0.1:3000');
 });
